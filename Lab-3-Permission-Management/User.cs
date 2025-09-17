@@ -12,14 +12,12 @@ namespace Lab_3_Permission_Management
         private Permissions permissions;
         private string name;
 
- 
         public User(string name, Permissions initialPermissions = Permissions.None)
         {
             this.name = name;
             this.permissions = initialPermissions;
         }
 
-        // Getter and Setter for Name
         public string GetName()
         {
             return name;
@@ -30,7 +28,6 @@ namespace Lab_3_Permission_Management
             name = newName;
         }
 
-        // Getter and Setter for Permissions
         public Permissions GetPermissions()
         {
             return permissions;
@@ -41,27 +38,26 @@ namespace Lab_3_Permission_Management
             permissions = newPermissions;
         }
 
-        //  Add a single permission
         public void AddPermission(Permissions permission)
         {
-            // complete code to add a permission
+            permissions |= permission;
         }
-        //  Remove a single permission
+
         public void RemovePermission(Permissions permission)
         {
-            //complete code to remove a permission
-
+            permissions &= ~permission;
         }
-        //  Add multiple permisions
-        public void multiplyPermission(Permissions permission1,Permissions permission2)
-        {
-            //complete code to multiply permissions
 
+        public void MultiplyPermission(Permissions permission1, Permissions permission2)
+        {   
+            Permissions combined = permission1 | permission2;
+            permissions |= combined;
         }
-        //  remove multiple permisions
-        public void removeMultiplyPermission(Permissions permission1, Permissions permission2)
+
+        public void RemoveMultiplyPermission(Permissions permission1, Permissions permission2)
         {
-            //complete code to remove multiple permissions
+            Permissions combined = permission1 | permission2;
+            permissions &= ~combined;
         }
 
         public bool HasPermission(Permissions permission)
